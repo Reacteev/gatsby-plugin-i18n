@@ -1,0 +1,32 @@
+# Ignore folders and files that are not in the source code for all developpers
+
+# /!\ ATTENTION POINT /!\
+# If you add some entries here, don't forget to check with .dockerignore
+
+### Operating System ###
+
+.DS_Store
+
+### IDE ###
+
+# Visual Studio Code
+.vscode
+
+### Framework ###
+
+# Node
+node_modules
+coverage
+.yarn/install-state.gz
+# Babel
+.env
+# SonarQube
+.scannerwork
+
+### TypeScript build output ###
+
+dist
+
+### Others ###
+
+yarn-error.log

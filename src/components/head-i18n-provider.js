@@ -15,13 +15,13 @@ const HeadI18nProvider = ({ locale, namespaces, children }) => {
   `);
 
   const globalI18n = getI18nInstance();
-  
+
   const i18n = React.useMemo(() => {
     const instance = globalI18n.cloneInstance({
       lng: locale,
       fallbackLng: themeI18N.defaultLang,
       initImmediate: false,
-      interpolation: { escapeValue: false }
+      interpolation: { escapeValue: false },
     });
 
     const resources = loadResources(GATSBY_PLUGIN_I18N_LOCALES, locale, namespaces);
@@ -39,11 +39,7 @@ const HeadI18nProvider = ({ locale, namespaces, children }) => {
     return instance;
   }, [globalI18n, locale, namespaces, themeI18N.defaultLang]);
 
-  return (
-    <I18nextProvider i18n={i18n}>
-      {children}
-    </I18nextProvider>
-  );
+  return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
 };
 
 export { HeadI18nProvider };

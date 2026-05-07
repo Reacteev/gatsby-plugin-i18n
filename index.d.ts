@@ -14,6 +14,12 @@ declare module 'gatsby-plugin-i18n' {
   }
   export const LocalizedLink: React.FC<LocalizedLinkProps>;
 
+  export const HeadI18nProvider: React.FC<{
+    locale: string;
+    namespaces: string[];
+    children: React.ReactNode;
+  }>;
+
   export const useLocalization: () => {
     locale: string;
     defaultLang: string;

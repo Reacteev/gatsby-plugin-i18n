@@ -73,6 +73,23 @@ export default defineConfig([
       'jest/max-expects': ['off'],
       'jest/no-large-snapshots': 'off',
       'jest/require-hook': 'off',
+      // Type-aware jest rules need TS parser; disable on JS-only files.
+      'jest/no-error-equal': 'off',
+      'jest/no-unnecessary-assertion': 'off',
+      'jest/unbound-method': 'off',
+      'jest/valid-expect-with-promise': 'off',
+      // Opinionated jest v29 additions; keep current style.
+      'jest/padding-around-all': 'off',
+      'jest/padding-around-after-all-blocks': 'off',
+      'jest/padding-around-after-each-blocks': 'off',
+      'jest/padding-around-before-all-blocks': 'off',
+      'jest/padding-around-before-each-blocks': 'off',
+      'jest/padding-around-describe-blocks': 'off',
+      'jest/padding-around-expect-groups': 'off',
+      'jest/padding-around-test-blocks': 'off',
+      'jest/prefer-ending-with-an-expect': 'off',
+      'jest/prefer-importing-jest-globals': 'off',
+      'jest/no-untyped-mock-factory': 'off',
 
       'jsx-a11y/anchor-is-valid': [
         'error',

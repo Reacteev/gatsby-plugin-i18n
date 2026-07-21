@@ -139,6 +139,16 @@ exports.onCreatePage = ({ page, actions }, themeOptions) => {
       newPage.matchPath = `/${locale.code}/*`;
     }
 
+    // When a page provides per-locale MDX bodies (context.localeContent maps a
+    // locale to its __contentFilePath), point this locale's page at its own
+    // body. Without this, translated pages sharing one slug all render the same
+    // (first-built) language's content.
+    const localeContent = page.context && page.context.localeContent;
+    if (localeContent && localeContent[locale.code] && typeof newPage.component === 'string') {
+      const componentPath = newPage.component.split('?')[0];
+      newPage.component = `${componentPath}?__contentFilePath=${localeContent[locale.code]}`;
+    }
+
     createPage(newPage);
   });
 

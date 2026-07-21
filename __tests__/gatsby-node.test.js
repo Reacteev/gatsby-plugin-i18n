@@ -210,6 +210,22 @@ describe('onCreatePage', () => {
       }),
     );
   });
+
+  it('points each locale page at its own MDX body from context.localeContent', () => {
+    expect.hasAssertions();
+    const page = {
+      path: '/news/post/',
+      component: '/tpl/post-query.tsx?__contentFilePath=/content/index.default.md',
+      context: {
+        localeContent: { fr: '/content/index.fr.md', en: '/content/index.en.md' },
+      },
+    };
+    gatsbyNode.onCreatePage({ page, actions: localActions }, themeOptions);
+    const frCall = localActions.createPage.mock.calls.find(([p]) => p.context.locale === 'fr');
+    const enCall = localActions.createPage.mock.calls.find(([p]) => p.context.locale === 'en');
+    expect(frCall[0].component).toBe('/tpl/post-query.tsx?__contentFilePath=/content/index.fr.md');
+    expect(enCall[0].component).toBe('/tpl/post-query.tsx?__contentFilePath=/content/index.en.md');
+  });
 });
 
 describe('onCreateWebpackConfig', () => {
